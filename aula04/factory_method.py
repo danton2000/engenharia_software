@@ -2,65 +2,65 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-class Creator(ABC):
+class Construcao(ABC):
     """
-    A classe Creator declara o método de fábrica que deve retornar um
-    objeto de uma classe Produto. As subclasses do Creator geralmente fornecem o
-    implementação deste método.
+    The Creator class declares the factory method that is supposed to return an
+    object of a Product class. The Creator's subclasses usually provide the
+    implementation of this method.
     """
 
     @abstractmethod
     def factory_method(self):
         """
-        Observe que o Criador também pode fornecer alguma implementação padrão de
-        o método de fábrica.
+        Note that the Creator may also provide some default implementation of
+        the factory method.
         """
         pass
 
-    def some_operation(self) -> str:
+    def alguma_operacao(self) -> str:
         """
-        Observe também que, apesar do nome, a responsabilidade primária do Criador
-        não está criando produtos. Geralmente, ele contém alguma lógica de negócios central
-        que depende de objetos Product, retornados pelo método factory.
-        As subclasses podem alterar indiretamente essa lógica de negócios, substituindo o
-        método de fábrica e devolver um tipo diferente de produto dele.
+        Also note that, despite its name, the Creator's primary responsibility
+        is not creating products. Usually, it contains some core business logic
+        that relies on Product objects, returned by the factory method.
+        Subclasses can indirectly change that business logic by overriding the
+        factory method and returning a different type of product from it.
         """
 
-        # Chame o método fábrica para criar um objeto Produto.
+        # Call the factory method to create a Product object.
         product = self.factory_method()
 
-        # Agora, use o produto.
-        result = f"Creator: The same creator's code has just worked with {product.operation()}"
+        # Now, use the product.
+        result = f"Construção: O código do mesmo criador acabou de funcionar com {product.operation()}"
 
         return result
 
 
 """
-Os Criadores Concretos substituem o método de fábrica para alterar o resultado
-tipo de produto.
+Concrete Creators override the factory method in order to change the resulting
+product's type.
 """
 
 
-class ConcreteCreator1(Creator):
+class ConstrucaoEdificio(Construcao):
     """
-    Observe que a assinatura do método ainda usa o tipo abstrato de produto,
-    mesmo que o produto concreto seja realmente retornado do método. Esse
-    maneira como o Criador pode permanecer independente de classes concretas de produtos.
+    Note that the signature of the method still uses the abstract product type,
+    even though the concrete product is actually returned from the method. This
+    way the Creator can stay independent of concrete product classes.
     """
 
-    def factory_method(self) -> Product:
-        return ConcreteProduct1()
+    def factory_method(self) -> ConstrucaoDeCasas:
+        return ConstruindoEdificio()
 
 
-class ConcreteCreator2(Creator):
-    def factory_method(self) -> Product:
-        return ConcreteProduct2()
+class ConstrucaoCastelo(Construcao):
+    def factory_method(self) -> ConstrucaoDeCasas:
+        return ConstruindoCastelo()
 
 
-class Product(ABC):
+class ConstrucaoDeCasas(ABC):
     """
-    A interface Produto declara as operações que todos os produtos concretos
-    deve implementar.
+    The Product interface declares the operations that all concrete products
+    must implement.
     """
 
     @abstractmethod
@@ -69,35 +69,35 @@ class Product(ABC):
 
 
 """
-Os Produtos Concretos fornecem várias implementações da interface do Produto.
+Concrete Products provide various implementations of the Product interface.
 """
 
 
-class ConcreteProduct1(Product):
+class ConstruindoEdificio(ConstrucaoDeCasas):
     def operation(self) -> str:
-        return "{Result of the ConcreteProduct1}"
+        return "{Resultado da ConstruindoEdificio}"
 
 
-class ConcreteProduct2(Product):
+class ConstruindoCastelo(ConstrucaoDeCasas):
     def operation(self) -> str:
-        return "{Result of the ConcreteProduct2}"
+        return "{Resultado da ConstruindoCastelo}"
 
 
-def client_code(creator: Creator) -> None:
+def codigo_engenheiro(construcao: Construcao) -> None:
     """
-    O código cliente funciona com uma instância de um criador concreto, ainda que através
-    sua interface básica. Contanto que o cliente continue trabalhando com o criador via
-    a interface base, você pode passá-la para qualquer subclasse de criador.
+    The client code works with an instance of a concrete creator, albeit through
+    its base interface. As long as the client keeps working with the creator via
+    the base interface, you can pass it any creator's subclass.
     """
 
-    print(f"Client: I'm not aware of the creator's class, but it still works.\n"
-          f"{creator.some_operation()}", end="")
+    print(f"Engenheiro: Não conheço a classe do criador, mas ainda funciona.\n"
+          f"{construcao.alguma_operacao()}", end="")
 
 
 if __name__ == "__main__":
-    print("App: Launched with the ConcreteCreator1.")
-    client_code(ConcreteCreator1())
+    print("App: Começando com a ConstrucaoEdificio.")
+    codigo_engenheiro(ConstrucaoEdificio())
     print("\n")
 
-    print("App: Launched with the ConcreteCreator2.")
-    client_code(ConcreteCreator2())
+    print("App: Começando com ConstrucaoCastelo.")
+    codigo_engenheiro(ConstrucaoCastelo())
