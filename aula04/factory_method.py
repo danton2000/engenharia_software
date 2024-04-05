@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-class Creator(ABC):
+class Criador(ABC):
     """
     A classe Creator declara o método de fábrica que deve retornar um
     objeto de uma classe Produto. As subclasses do Creator geralmente fornecem o
@@ -27,12 +27,12 @@ class Creator(ABC):
         """
 
         # Chame o método fábrica para criar um objeto Produto.
-        product = self.factory_method()
+        profissao = self.factory_method()
 
         # Agora, use o produto.
-        result = f"Creator: The same creator's code has just worked with {product.operation()}"
+        resultado = f"Creator: The same creator's code has just worked with {profissao.operation()}"
 
-        return result
+        return resultado
 
 
 """
@@ -41,23 +41,23 @@ tipo de produto.
 """
 
 
-class ConcreteCreator1(Creator):
+class CriadorAnalista(Criador):
     """
     Observe que a assinatura do método ainda usa o tipo abstrato de produto,
     mesmo que o produto concreto seja realmente retornado do método. Esse
     maneira como o Criador pode permanecer independente de classes concretas de produtos.
     """
 
-    def factory_method(self) -> Product:
-        return ConcreteProduct1()
+    def factory_method(self) -> CietistaDeDados:
+        return AnalistaConcreto()
 
 
-class ConcreteCreator2(Creator):
-    def factory_method(self) -> Product:
-        return ConcreteProduct2()
+class CriadorEngenheiro(Criador):
+    def factory_method(self) -> CietistaDeDados:
+        return EngenheiroConcreto()
 
 
-class Product(ABC):
+class CietistaDeDados(ABC):
     """
     A interface Produto declara as operações que todos os produtos concretos
     deve implementar.
@@ -73,17 +73,17 @@ Os Produtos Concretos fornecem várias implementações da interface do Produto.
 """
 
 
-class ConcreteProduct1(Product):
+class AnalistaConcreto(CietistaDeDados):
     def operation(self) -> str:
-        return "{Result of the ConcreteProduct1}"
+        return "{Resultado do AnalistaConcreto}"
 
 
-class ConcreteProduct2(Product):
+class EngenheiroConcreto(CietistaDeDados):
     def operation(self) -> str:
-        return "{Result of the ConcreteProduct2}"
+        return "{Resultado do EngenheiroConcreto}"
 
 
-def client_code(creator: Creator) -> None:
+def client_code(creator: Criador) -> None:
     """
     O código cliente funciona com uma instância de um criador concreto, ainda que através
     sua interface básica. Contanto que o cliente continue trabalhando com o criador via
@@ -95,9 +95,9 @@ def client_code(creator: Creator) -> None:
 
 
 if __name__ == "__main__":
-    print("App: Launched with the ConcreteCreator1.")
-    client_code(ConcreteCreator1())
+    print("Profissão: Sou Analista de Dados.")
+    client_code(AnalistaConcreto())
     print("\n")
 
-    print("App: Launched with the ConcreteCreator2.")
-    client_code(ConcreteCreator2())
+    # print("Profissão: Sou Engenheiro de Dados.")
+    # client_code(EngenheiroConcreto())
