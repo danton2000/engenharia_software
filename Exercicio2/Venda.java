@@ -10,4 +10,18 @@ public class Venda {
     public Venda() {
         listaProdutosVendidos = new ArrayList<>();
     }
+
+    public void adicionarProdutoVenda(Produto produto) {
+        listaProdutosVendidos.add(produto);
+    }
+
+    public void listarProdutosVendidos() {
+        // percorendo a lista de obj
+        for (Produto produto : listaProdutosVendidos) {
+            System.out.println(
+                "Nome: " + produto.getNome() + 
+                " -- Preço: " + produto.getPreco()
+            );
+        }
+    }
 }
