@@ -20,8 +20,17 @@ public class Venda {
         for (Produto produto : listaProdutosVendidos) {
             System.out.println(
                 "Nome: " + produto.getNome() + 
-                " -- Preço: " + produto.getPreco()
+                " -- Preço: " + produto.getPreco() +
+                " -- Total:  " + produto.getPreco() * produto.getQuantidadeEstoque()
             );
         }
+    }
+
+    public double valorTotalVendas() {
+        double somaVendas = 0;
+        for (Produto produto : listaProdutosVendidos) {
+            somaVendas += produto.getPreco() * produto.getQuantidadeEstoque();
+        }
+        return somaVendas;
     }
 }

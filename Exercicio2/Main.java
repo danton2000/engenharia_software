@@ -17,8 +17,22 @@ public class Main {
 
         venda.adicionarProdutoVenda(livro1);
 
+        //venda.listarProdutosVendidos();
+
+        Eletronico eletronico1 = new Eletronico();
+
+        eletronico1.setNome("Notebook");
+
+        eletronico1.setPreco(4000.99);
+
+        eletronico1.setQuantidadeEstoque(2);
+
+        eletronico1.setMarca("Dell");
+
+        venda.adicionarProdutoVenda(eletronico1);
+
         venda.listarProdutosVendidos();
 
-
+        System.out.println("Total das Vendas: " + venda.valorTotalVendas());
     }
 }
