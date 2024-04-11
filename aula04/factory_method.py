@@ -2,52 +2,69 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
+<<<<<<< HEAD
 class Criador(ABC):
+=======
+class Construcao(ABC):
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
     """
-    A classe Creator declara o método de fábrica que deve retornar um
-    objeto de uma classe Produto. As subclasses do Creator geralmente fornecem o
-    implementação deste método.
+    The Creator class declares the factory method that is supposed to return an
+    object of a Product class. The Creator's subclasses usually provide the
+    implementation of this method.
     """
 
     @abstractmethod
     def factory_method(self):
         """
-        Observe que o Criador também pode fornecer alguma implementação padrão de
-        o método de fábrica.
+        Note that the Creator may also provide some default implementation of
+        the factory method.
         """
         pass
 
-    def some_operation(self) -> str:
+    def alguma_operacao(self) -> str:
         """
-        Observe também que, apesar do nome, a responsabilidade primária do Criador
-        não está criando produtos. Geralmente, ele contém alguma lógica de negócios central
-        que depende de objetos Product, retornados pelo método factory.
-        As subclasses podem alterar indiretamente essa lógica de negócios, substituindo o
-        método de fábrica e devolver um tipo diferente de produto dele.
+        Also note that, despite its name, the Creator's primary responsibility
+        is not creating products. Usually, it contains some core business logic
+        that relies on Product objects, returned by the factory method.
+        Subclasses can indirectly change that business logic by overriding the
+        factory method and returning a different type of product from it.
         """
 
+<<<<<<< HEAD
         # Chame o método fábrica para criar um objeto Produto.
         profissao = self.factory_method()
 
         # Agora, use o produto.
         resultado = f"Creator: The same creator's code has just worked with {profissao.operation()}"
+=======
+        # Call the factory method to create a Product object.
+        product = self.factory_method()
+
+        # Now, use the product.
+        result = f"Construção: O código do mesmo criador acabou de funcionar com {product.operation()}"
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
 
         return resultado
 
 
 """
-Os Criadores Concretos substituem o método de fábrica para alterar o resultado
-tipo de produto.
+Concrete Creators override the factory method in order to change the resulting
+product's type.
 """
 
 
+<<<<<<< HEAD
 class CriadorAnalista(Criador):
+=======
+class ConstrucaoEdificio(Construcao):
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
     """
-    Observe que a assinatura do método ainda usa o tipo abstrato de produto,
-    mesmo que o produto concreto seja realmente retornado do método. Esse
-    maneira como o Criador pode permanecer independente de classes concretas de produtos.
+    Note that the signature of the method still uses the abstract product type,
+    even though the concrete product is actually returned from the method. This
+    way the Creator can stay independent of concrete product classes.
     """
 
+<<<<<<< HEAD
     def factory_method(self) -> CietistaDeDados:
         return AnalistaConcreto()
 
@@ -58,9 +75,21 @@ class CriadorEngenheiro(Criador):
 
 
 class CietistaDeDados(ABC):
+=======
+    def factory_method(self) -> ConstrucaoDeCasas:
+        return ConstruindoEdificio()
+
+
+class ConstrucaoCastelo(Construcao):
+    def factory_method(self) -> ConstrucaoDeCasas:
+        return ConstruindoCastelo()
+
+
+class ConstrucaoDeCasas(ABC):
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
     """
-    A interface Produto declara as operações que todos os produtos concretos
-    deve implementar.
+    The Product interface declares the operations that all concrete products
+    must implement.
     """
 
     @abstractmethod
@@ -69,10 +98,11 @@ class CietistaDeDados(ABC):
 
 
 """
-Os Produtos Concretos fornecem várias implementações da interface do Produto.
+Concrete Products provide various implementations of the Product interface.
 """
 
 
+<<<<<<< HEAD
 class AnalistaConcreto(CietistaDeDados):
     def operation(self) -> str:
         return "{Resultado do AnalistaConcreto}"
@@ -84,20 +114,42 @@ class EngenheiroConcreto(CietistaDeDados):
 
 
 def client_code(creator: Criador) -> None:
+=======
+class ConstruindoEdificio(ConstrucaoDeCasas):
+    def operation(self) -> str:
+        return "{Resultado da ConstruindoEdificio}"
+
+
+class ConstruindoCastelo(ConstrucaoDeCasas):
+    def operation(self) -> str:
+        return "{Resultado da ConstruindoCastelo}"
+
+
+def codigo_engenheiro(construcao: Construcao) -> None:
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
     """
-    O código cliente funciona com uma instância de um criador concreto, ainda que através
-    sua interface básica. Contanto que o cliente continue trabalhando com o criador via
-    a interface base, você pode passá-la para qualquer subclasse de criador.
+    The client code works with an instance of a concrete creator, albeit through
+    its base interface. As long as the client keeps working with the creator via
+    the base interface, you can pass it any creator's subclass.
     """
 
-    print(f"Client: I'm not aware of the creator's class, but it still works.\n"
-          f"{creator.some_operation()}", end="")
+    print(f"Engenheiro: Não conheço a classe do criador, mas ainda funciona.\n"
+          f"{construcao.alguma_operacao()}", end="")
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     print("Profissão: Sou Analista de Dados.")
     client_code(AnalistaConcreto())
     print("\n")
 
     # print("Profissão: Sou Engenheiro de Dados.")
     # client_code(EngenheiroConcreto())
+=======
+    print("App: Começando com a ConstrucaoEdificio.")
+    codigo_engenheiro(ConstrucaoEdificio())
+    print("\n")
+
+    print("App: Começando com ConstrucaoCastelo.")
+    codigo_engenheiro(ConstrucaoCastelo())
+>>>>>>> 5d67f3ec592ff610578ca92784a72af7fff6e9ed
