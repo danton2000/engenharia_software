@@ -14,4 +14,9 @@ public class Curriculo extends Documento{
         System.out.println("Fechando Curriculo");
     }
 
+    @Override
+    public void abrirDoc() {
+        System.out.println("Abrindo Curriculo");
+    }
+
 }
