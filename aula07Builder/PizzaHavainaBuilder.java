@@ -1,6 +1,6 @@
-public class PizzaHavainaBuilder extends PizzaBulder{
+public class PizzaHavainaBuilder extends PizzaBuilder{
 
-    //Metodos que vem lá da classe PizzaBulder
+    //Metodos que vem lá da classe PizzaBuilder
     @Override
     public void massaBuilder() {
         // TODO Auto-generated method stub

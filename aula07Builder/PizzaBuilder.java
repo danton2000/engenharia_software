@@ -1,4 +1,4 @@
-public abstract class PizzaBulder {
+public abstract class PizzaBuilder {
     
     public Pizza pizza;
 
