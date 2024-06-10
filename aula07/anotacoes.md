@@ -88,7 +88,7 @@
     Fala sobre a compisição entre as classes e objetos. Como elas se relacionam, como são criadas em um estilo mais arquitetural.
     Exemplos: Adapter, Composite, Proxy, Flyweight, Facede, Bridge, Decoratos.
 
-#### Padão Adapter
+#### Padão Adapter(Adaptaçlão para interfaces incopativeis)
     Proposito: Permite que interface incompativeis trabalhem juntas.
 
     Contexto: Quando temos duas interface incompativeis que precisam trabalhar juntas
@@ -114,7 +114,7 @@
     - Pode aumentar a complexidade do codigo
     - Adicionar mais uma camada.
 
-#### Padrão Composite
+#### Padrão Composite(Arvore)
     Proposito: Compor objetos em estruturas de arvore para representar hierarquias parte-todo
 
     Contexto: Quando queremos tratar objetos individuas e composições de objetos de maneira uniforme.
@@ -138,7 +138,7 @@
 
     - Pode dificultar a implemntação de operações especificar para componentes.
 
-#### Padrão Proxy
+#### Padrão Proxy(Guarda chuva, evitando acesso)
     Proposito: Fornece um substituto ou ponto atravès do qual um objeto pode controlar o acesso a outro.
 
     Contexto: Quando precisamos deum controle adicional ou processamento quando acessamos um objeto.
@@ -162,7 +162,7 @@
     - Pode introduzir latencia adicional.
     - Pode aumentar a complexidade do sistema.
 
-#### Padrão Flyweight
+#### Padrão Flyweight(Compartilhamento para suportar grandes quantidades de objetos)
     Propósito: Usar compartilhamento para suportar grandes quantidades de objetos de forma eficiente.
 
     Contexto: Quando temos um grande numero de objetos similares e queremos reduzir o uso de momoria
@@ -185,7 +185,7 @@
     - Pode introduzir complexidade adicional.
     - A coordenação de estado intrinseco e extrinseco pode ser complicada.
 
-#### Padrão Facade
+#### Padrão Facade(Facada, para enchegar algo simples que mascara o que está atras)
     Proposito: Fornecer uma interface simplificada para um conjunto de interfaces em um subsitema.
 
     Contexto: Quando queremos simplificar a interação com um subsistema complexo
@@ -207,7 +207,7 @@
     - Pode mascarar a complexidade real do subsistema.
     - O Facade pode se tornar um ponto unico de falha.
 
-####  padrão Bridge
+####  Padrão Bridge(Construi a ponte, separando os objetos para que eles tenha uma vida separada da implementação da abstração)
     Proposito: Desacoplar uma abstração de sua implementação para que as duas possam varias indepedentemente.
 
     Contexto: Quando se deseja evitar a ligação permanente entre uma abstração e sua implementação
@@ -230,7 +230,7 @@
     Limitações:
     - Pode aumentar a complexidade devido á maior quantidade de classes
 
-#### Padrão Decorator
+#### Padrão Decorator(Adiciona um comportamento)
     Proposito: Adicionar responsabilidades a um objeto dinamicamente.
 
     Contexto: Quando queremos adicioanr funcionalidades a objetos individuais de maneira flexivel.
