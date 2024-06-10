@@ -250,4 +250,6 @@
     Lida com a comunicação dos objetos.
     Exemplos: Observer, Strategy, Commanand, State, Visitor, Mediator, Chain os Responsibility, Memento, Iterator, Template Method, Interpreter.
 
+Responder o exercico e validar as respostas.
+
     
